@@ -9,6 +9,6 @@ create table user_tb(
 create table board_tb(
     id int auto_increment primary key,
     title varchar not null unique,
-    user_id int not null,
+    user_id int,
     created_at timestamp
 );

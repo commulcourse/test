@@ -7,24 +7,24 @@
     <select id="findByUsernameAndPassword" resultType="shop.mtcoding.test1.model.User">
         select * from user_tb where username = #{username} and password = #{password}
     </select>
-	<select id="findAll" resultType="shop.mtcoding.test1.model.User">
-		select * from user_tb
-	</select>
+	<!-- <select id="findAll" resultType="shop.mtcoding.test1.model.User">
+		select * from User_tb
+	</select> -->
 	
-	<select id="findByUserId" resultType="shop.mtcoding.test1.model.User">
-		select * from user_tb where user_id = #{userId}
+	<select id="findById" resultType="shop.mtcoding.test1.model.User">
+		select * from User_tb where user_id = #{userId}
 	</select>
 
 	<insert id="insert">
-		insert into user_tb(username, password, email, created_at) values(#{username}, #{password}, #{email}, now())
+		insert into User_tb(username, password, email, created_at) values(#{username}, #{password}, #{email}, now())
 	</insert>
 
 	<delete id="deleteById">
-		delete from user_tb where id = #{id}
+		delete from User_tb where id = #{id}
 	</delete>
 
 	<update id="update">
-		update user_tb 
+		update User_tb 
 		set password = #{password},
 			email = #{email}
 		where id = #{id}

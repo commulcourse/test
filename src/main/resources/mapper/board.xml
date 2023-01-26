@@ -5,23 +5,23 @@
 
 <mapper namespace="shop.mtcoding.test1.model.BoardRepository">
 	<select id="findAll" resultType="shop.mtcoding.test1.model.Board">
-		select * from board_tb
+		select * from Board_tb
 	</select>
 	
 	<select id="findByUserId" resultType="shop.mtcoding.test1.model.Board">
-		select * from board_tb where user_id = #{userId}
+		select * from Board_tb where user_id = #{userId}
 	</select>
 
 	<insert id="insert">
-		insert into board_tb(title, user_id, created_at) values(#{title}, #{userId}, now())
+		insert into Board_tb(title, user_id, created_at) values(#{title}, #{userId}, now())
 	</insert>
 
 	<delete id="deleteById">
-		delete from board_tb where id = #{id}
+		delete from Board_tb where id = #{id}
 	</delete>
 
 	<update id="updateById">
-		update board_tb 
+		update Board_tb 
 		set title = #{title},
             userId = #{userId},
             created_at = now()

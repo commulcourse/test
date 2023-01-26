@@ -60,9 +60,9 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public String update(String username, String password, String email) {
+    public String update(String password, String email) {
         User principal = (User) session.getAttribute("principal");
-        int result = userRepository.update(principal.getId(), username, password, email);
+        int result = userRepository.update(principal.getId(), password, email);
         if (result == 1) {
             return "redirect:/";
         } else {
@@ -86,7 +86,7 @@ public class UserController {
             return "redirect:/loginForm";
         }
         session.setAttribute("principal", user);
-        return "redirect:/board";// board/list
+        return "redirect:/board";
     }
 
 }
