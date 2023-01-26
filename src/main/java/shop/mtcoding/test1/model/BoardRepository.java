@@ -7,13 +7,18 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface BoardRepository {
-    public int insert(@Param("title") String title, @Param("userid") int userid);
+    // public int insert(@Param("title") String title, @Param("userid") int userid);
+    public int insert();
 
     public List<Board> findAll();
 
-    public Board findById(int id);
+    public Board findById();
 
-    public int updateById(@Param("id") int id, @Param("title") String title, @Param("userid") String userid);
+    public List<Board> findByUserId(int userId);
 
-    public int deleteById(int id);
+    // public int update(@Param("id") int id, @Param("title") String title,
+    // @Param("userid") String userid);
+    public int update();
+
+    public int delete(int id);
 }

@@ -7,16 +7,21 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface UserRepository { // CRUD
-    public int insert(@Param("username") String username, @Param("password") String password,
-            @Param("email") String email);
+        public int insert(@Param("username") String username,
+                        @Param("password") String password,
+                        @Param("email") String email);
 
-    public List<User> findAll();
+        public List<User> findAll();
 
-    public User findById(int id);
+        public User findById(int id);
 
-    public int updateById(@Param("id") int id, @Param("password") String password);
+        public int update(@Param("id") int id,
+                        @Param("username") String username,
+                        @Param("password") String password,
+                        @Param("email") String email);
 
-    public int deleteById(int id);
+        public int delete(int id);
 
-    public User findByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
+        public User findByUsernameAndPassword(@Param("username") String username,
+                        @Param("password") String password);
 }

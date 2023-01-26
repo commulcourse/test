@@ -2,14 +2,16 @@ package shop.mtcoding.test1.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import shop.mtcoding.test1.model.Board;
 import shop.mtcoding.test1.model.BoardRepository;
+import shop.mtcoding.test1.model.User;
 
 @Controller
 public class BoardController {
@@ -17,21 +19,18 @@ public class BoardController {
     @Autowired
     private BoardRepository boardRepository;
 
-    @GetMapping({ "/", "/board" })
-    public String home(Model model) {
-        List<Board> boardList = boardRepository.findAll();
+    @Autowired
+    private HttpSession session;
+
+    @GetMapping("/list")
+    public String list(Model model) {
+        User principal = (User) session.getAttribute("principal");
+        if (principal == null) {
+            return "redirect:/login";
+        }
+        List<Board> boardList = boardRepository.findByUserId(principal.getId());
         model.addAttribute("boardList", boardList);
         return "board/list";
-    }
 
-    @GetMapping("/board/{id}")
-    public String detail(@PathVariable int id, Model model) {
-        Board board = boardRepository.findById(id);
-        if (board == null) {
-            return "redirect:/notfound";
-        } else {
-            model.addAttribute("board", board);
-            return "board/detail";
-        }
     }
 }

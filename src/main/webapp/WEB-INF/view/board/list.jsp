@@ -2,27 +2,30 @@
 
     <%@ include file="../layout/header.jsp" %>
 
-        <h1>상품목록 페이지</h1>
+        <h1>게시글 페이지</h1>
         <hr />
-        <table border="1">
-            <tr>
-                <th>번호</th>
-                <th>상품명</th>
-                <th>가격</th>
-                <th>재고</th>
-                <th>등록일</th>
-            </tr>
-             <%-- model.addAttribute로 view에 전달받은 productList의 값이 담김 --%>
+        <div class="box1">
+            <!-- <a href="/updateForm/${principal.id}">회원정보</a> -->
+            <a href="/updateForm">회원정보</a>
+            <a href="/logout">로그아웃</a>
+        </div>
+        <br />
+        <div class="innerbox">
+            <table border="1">
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성일</th>
+                </tr>
                 <c:forEach items="${boardList}" var="board">
                     <tr>
                         <td>${board.id}</td>
-                        <td><a href="/board/${board.id}">${board.name}</a></td>
-                        <td>${board.price}원</td>
-                        <td>${board.qty}개</td>
+                        <td><a href="">${board.title}</a></td>
                         <td>${board.createdAt}</td>
                     </tr>
                 </c:forEach>
-
-        </table>
+            </table>
+        </div>
+        <a href="/">글작성</a>
 
         <%@ include file="../layout/footer.jsp" %>

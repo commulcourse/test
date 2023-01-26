@@ -8,12 +8,12 @@
 		select * from board_tb
 	</select>
 	
-	<select id="findById" resultType="shop.mtcoding.test1.model.Board">
-		select * from board_tb where id = #{id}
+	<select id="findByUserId" resultType="shop.mtcoding.test1.model.Board">
+		select * from board_tb where user_id = #{userId}
 	</select>
 
 	<insert id="insert">
-		insert into board_tb(title, user_id, created_at) values(#{title}, #{userid}, now())
+		insert into board_tb(title, user_id, created_at) values(#{title}, #{userId}, now())
 	</insert>
 
 	<delete id="deleteById">
@@ -23,7 +23,7 @@
 	<update id="updateById">
 		update board_tb 
 		set title = #{title},
-            userId = #{userid},
+            userId = #{userId},
             created_at = now()
 		where id = #{id}
 	</update>
